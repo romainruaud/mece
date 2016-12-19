@@ -7,17 +7,34 @@
         "OSL-3.0",
         "AFL-3.0"
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "0": {
             "type": "composer",
             "url": "https://repo.magento.com/"
+        },
+        "smile_librarires": {
+            "type": "composer",
+            "url": "https://packagist.smile.fr/libraries/"
+        },
+        "smile_magento2": {
+            "type": "composer",
+            "url": "https://packagist.smile.fr/magento2/"
         }
-    ],
+    },
     "require": {
-        "magento/magento-cloud-metapackage": "2.1.2"
+        "magento/magento-cloud-metapackage": "2.1.2",
+        "smile/magento2-library-framework": "^2.0",
+        "smile/module-core": "^2.0",
+        "smile/module-indexer": "^1.0",
+        "smile/module-reconfigure": "^2.1",
+        "smile/module-setup": "^2.0"
     },
     "config": {
-        "use-include-path": true
+        "use-include-path": true,
+        "platform": {
+
+        },
+        "bin-dir": "./bin"
     },
     "autoload": {
         "psr-4": {
@@ -45,5 +62,9 @@
     "prefer-stable": true,
     "extra": {
         "magento-force": "override"
+    },
+    "require-dev": {
+        "smile/spbuilder": "^2.8",
+        "smile-sa/smileanalyser": "^4.2"
     }
 }

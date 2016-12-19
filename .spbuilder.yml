@@ -1,0 +1,92 @@
+# Contains global Spbuilder configuration
+global:
+  log_dir: build/logs           # (Optional) Destination for reports. This is the default value.
+  package_dir: build/dist       # (Optional) Destination for packages. This is the default value.
+  clean: true                   # (Optional) True if you want to remove the output_dir on each run.
+
+# Quality tools configuration
+tools:
+
+  # Runs PHPUnit tests
+  # phpunit:
+  #   configuration: dev/tests/unit # (Mandatory) Any 'phpunit -c' compatible value
+  #   coverage: true                # (Optional) If set to true, will generate a XML clover coverage report
+
+  # Runs phpspec test
+  # phpspec:
+  #   configuration: phpspec.yml    # (Mandatory) Any 'phpspec -c' compatible value
+
+  # Will recursively run 'php -l' on directories and matching file extensions
+  phplint:
+    files:                        # (Mandatory) Directories to check
+      - app/code
+
+  # Runs PHP_CodeSniffer
+  phpcs:
+    files:                        # (Mandatory) Directories to check
+      - app/code
+    standard: vendor/smile/spbuilder/Resources/phpcs-standards/Magento2
+
+  # Runs PHPMD
+  phpmd:
+    files:                        # (Mandatory) Directories to check. Caution: one report file will be generated per directory.
+      - app/code
+    rulesets:                     # (Mandatory) Rulesets to check
+      - cleancode
+      - codesize
+      - design
+      - vendor/smile/spbuilder/Resources/pmd/Magento2/rulesets/naming.xml
+      - unusedcode
+
+  # Runs PDepend
+  pdepend:
+    files:                        # (Mandatory) Directories to check.
+      - app/code
+    enable:                       # (Optional) List of enable reports
+      - jdepend-xml               # Default
+      - jdepend-chart
+      - summary-xml
+      - overview-pyramid
+
+  # Runs phpcpd
+  phpcpd:
+    files:                        # (Mandatory) Directories to check.
+      - app/code
+
+  # Runs Qafoo Quality Analyzer
+  visualization:
+    files:
+    hostname: localhost
+    port: 8080
+
+# Package creation
+package:
+  format: tar.gz                  # Package format (availables : tar, tar,gz, tar.bz2, zip, phar, none)
+  commands:                       # Commands to run during packaging
+    - composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --ignore-platform-reqs
+  excludes:                       # Path to exclude from package
+    - ./architecture
+    - ./build
+    - ./docs
+    - ./scripts
+    - ./lxcfile
+    - ./CHANGELOG.md
+    - ./CONTRIBUTING.md
+    - ./COPYING.txt
+    - ./ISSUE_TEMPLATE.md
+    - ./README.md
+    - ./.gitignore
+    - ./.php_cs
+    - ./.spbuilder.yml
+    - ./.smileanalyser.yml
+    - ./.travis.yml
+    - ./.htaccess.sample
+    - ./nginx.conf.sample
+    - ./package.json.sample
+    - ./php.ini.sample
+    - ./Gruntfile.js.sample
+    - .htaccess
+  skipRoot: true
+  vcs:
+    type: git                     # VCS Type (availables : git, svn)
+    url: ~                        # Repository URL (default to local git repo, with .git extension, not the https one)
