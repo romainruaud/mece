@@ -17,6 +17,10 @@ runtime:
         - redis
         - xsl
         - json
+        - name: blackfire
+          configuration:
+             server_id: "13ca1b1a-eec6-42b0-99cd-238d0bfffbb9"
+             server_token: "19eca5e875077c94b3dbf3d6d37d3df632b7144d8c65f291838ac193bd4ce9ee"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
