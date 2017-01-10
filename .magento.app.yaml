@@ -19,8 +19,8 @@ runtime:
         - json
         - name: blackfire
           configuration:
-             server_id: "13ca1b1a-eec6-42b0-99cd-238d0bfffbb9"
-             server_token: "19eca5e875077c94b3dbf3d6d37d3df632b7144d8c65f291838ac193bd4ce9ee"
+             server_id: "bb9484ae-6c08-44ea-9c15-94a0cdc5a0aa"
+             server_token: "7c8ad288cc91ca815f1b850ee764745c775d2264be9a77164a9a05583012ea52"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
